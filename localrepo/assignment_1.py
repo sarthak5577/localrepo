@@ -1,58 +1,33 @@
- #Library Borrowing Records
-
-n = int(input("Enter the number of library members: "))
-
-# Create a list of size n
-borrow = [0] * n
-
-# Input borrow counts
-for i in range(n):
-    borrow[i] = int(input("Enter books borrowed by member " + str(i + 1) + ": "))
-
-# 1. Calculate Average
-total = 0
-for i in range(n):
-    total = total + borrow[i]
-
-average = total / n
-print("\nAverage books borrowed:", average)
-
-# 2. Find Highest and Lowest Borrow Count
-highest = borrow[0]
-lowest = borrow[0]
-
-for i in range(1, n):
-    if borrow[i] > highest:
-        highest = borrow[i]
-
-    if borrow[i] < lowest:
-        lowest = borrow[i]
-
-print("Highest borrow count:", highest)
-print("Lowest borrow count:", lowest)
-
-# 3. Count Members with Zero Borrowings
-zero_count = 0
-
-for i in range(n):
-    if borrow[i] == 0:
-        zero_count = zero_count + 1
-
-print("Members who borrowed no books:", zero_count)
-
-# 4. Find Mode (Most Frequent Borrow Count)
-mode = borrow[0]
-max_count = 0
-
-for i in range(n):
-    count = 0
-
-    for j in range(n):
-        if borrow[i] == borrow[j]:
-            count = count + 1
-
-    if count > max_count:
-        max_count = count
-        mode = borrow[i]
-
-print("Most frequently borrowed count (Mode):", mode)
+memcount=int(input("Enter the number of members in library:- "))
+borrowed=[]
+for i in range(memcount):
+    name=int(input(f"Enter the book borrowed by member {i+1}:- "))
+    borrowed.append(name)
+total=0
+for j in range(len(borrowed)):
+    total=total+borrowed[j]
+print("Total book borrowed:- ", total)
+avg= total/memcount
+print("Average book borrowed by each member:- ", avg)
+for k in range(memcount):
+    if borrowed[k]==max(borrowed):
+        print(f"Member {k+1} borrowed maximum book that is :- ", borrowed[k])
+    if borrowed[k]==min(borrowed):
+        print(f"Member {k+1} borrowed minimum book that is :- ", borrowed[k])
+    if borrowed[k]==0:
+        print(f"Member {k+1} borrowed no book that is :- ", borrowed[k])
+#for frequncy of borrowed 
+max_count=0
+max_borrowed=""
+for i in borrowed:
+    count=0
+    for j in borrowed:
+        if i==j:
+            count+=1
+    if count>max_count:
+        max_count=count
+        max_borrowed=i
+if max_count==0:
+    print("No book borrowed frequently")
+else:
+    print("Most frequently borrowed  is:- ",max_borrowed)
